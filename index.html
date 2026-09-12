@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>플랜두씨 다이어리</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .plan {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>플랜두씨 다이어리</h1>
+
+    <p>
+        계획(Plan) → 실제로 한 일(Do) → 돌아보기(See)
+    </p>
+
+
+    <!-- ========================= -->
+    <!-- 계획 세우기 -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>📋 계획 세우기</h2>
+
+        <label>
+            계획 이름
+            <input
+                type="text"
+                id="planTitle"
+                placeholder="예: 자바스크립트 공부">
+        </label>
+
+        <label>
+            기간
+            <input
+                type="date"
+                id="planDate">
+        </label>
+
+        <label>
+            우선순위
+            <select id="planPriority">
+                <option value="낮음">낮음</option>
+                <option value="보통" selected>보통</option>
+                <option value="높음">높음</option>
+            </select>
+        </label>
+
+        <label>
+            성공 기준
+            <textarea
+                id="planSuccess"
+                rows="3"
+                placeholder="예: 자바스크립트 문제 3개 풀기"></textarea>
+        </label>
+
+        <label>
+            예상 시간(분)
+            <input
+                type="number"
+                id="planExpectedTime"
+                min="0"
+                placeholder="예: 60">
+        </label>
+
+        <button onclick="createPlan()">
+            계획 저장
+        </button>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- 계획 목록 -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>📝 내 계획</h2>
+
+        <div id="planList">
+            아직 저장된 계획이 없습니다.
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- 할 일 -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>✅ 할 일</h2>
+
+        <label>
+            할 일
+            <input
+                type="text"
+                id="todoTitle"
+                placeholder="예: 자바스크립트 함수 공부">
+        </label>
+
+        <button onclick="createTodo()">
+            할 일 추가
+        </button>
+
+        <div id="todoList">
+            아직 할 일이 없습니다.
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- 실제 실행 -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>⏱️ 실제로 한 일</h2>
+
+        <p id="executionStatus">
+            아직 실행을 시작하지 않았습니다.
+        </p>
+
+        <button onclick="startExecution()">
+            실행 시작
+        </button>
+
+        <button onclick="finishExecution()">
+            실행 종료
+        </button>
+
+        <div id="executionResult"></div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- 돌아보기 -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>🔎 돌아보기</h2>
+
+        <div id="reviewResult">
+            아직 돌아볼 기록이 없습니다.
+        </div>
+
+    </section>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
