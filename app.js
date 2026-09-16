@@ -26,6 +26,8 @@ function createPlan() {
 
     localStorage.setItem("plans", JSON.stringify(plans));
 
+    exportT06Data();
+
     alert("계획이 저장되었습니다.");
 
     renderPlans();
@@ -92,6 +94,8 @@ function togglePlan(id) {
 
     localStorage.setItem("plans", JSON.stringify(plans));
 
+    exportT06Data();
+
     renderPlans();
 }
 
@@ -108,6 +112,8 @@ function deletePlan(id) {
     });
 
     localStorage.setItem("plans", JSON.stringify(plans));
+
+    exportT06Data();
 
     renderPlans();
 }
@@ -131,6 +137,8 @@ function createTodo() {
     todos.push(todo);
 
     localStorage.setItem("todos", JSON.stringify(todos));
+
+    exportT06Data();
 
     document.getElementById("todoTitle").value = "";
 
@@ -185,6 +193,8 @@ function toggleTodo(id) {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 
+    exportT06Data();
+
     renderTodos();
 }
 
@@ -201,6 +211,8 @@ function deleteTodo(id) {
     });
 
     localStorage.setItem("todos", JSON.stringify(todos));
+
+    exportT06Data();
 
     renderTodos();
 }
@@ -306,6 +318,8 @@ function finishExecution() {
         JSON.stringify(records)
     );
 
+    exportT06Data();
+
     document.getElementById("executionStatus").textContent =
         "■ 실행 종료: " + endTime.toLocaleString("ko-KR");
 
@@ -320,4 +334,31 @@ function finishExecution() {
     executionStartTime = null;
 
     renderReview();
+}
+
+function exportT06Data() {
+    const plans = JSON.parse(
+        localStorage.getItem("plans") || "[]"
+    );
+
+    const todos = JSON.parse(
+        localStorage.getItem("todos") || "[]"
+    );
+
+    const executionRecords = JSON.parse(
+        localStorage.getItem("executionRecords") || "[]"
+    );
+
+    const data = {
+        source: "T06",
+        exportedAt: new Date().toISOString(),
+        plans: plans,
+        todos: todos,
+        executionRecords: executionRecords
+    };
+
+    localStorage.setItem(
+        "T06_LATEST_DATA",
+        JSON.stringify(data)
+    );
 }
