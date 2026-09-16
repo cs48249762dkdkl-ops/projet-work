@@ -362,3 +362,18 @@ function exportT06Data() {
         JSON.stringify(data)
     );
 }
+
+fetch("https://blank-nodejs-project--cs48249762dkdkl.replit.app/import-t06", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+    console.log("T07 전송 결과:", result);
+})
+.catch(error => {
+    console.error("T07 전송 실패:", error);
+});
