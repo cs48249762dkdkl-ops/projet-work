@@ -361,7 +361,6 @@ function exportT06Data() {
         "T06_LATEST_DATA",
         JSON.stringify(data)
     );
-}
 
 fetch("https://blank-nodejs-project--cs48249762dkdkl.replit.app/import-t06", {
     method: "POST",
