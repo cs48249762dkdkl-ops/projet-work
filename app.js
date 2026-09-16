@@ -10,15 +10,15 @@ function createPlan() {
         return;
     }
 
-   const plan = {
-    id: Date.now(),
-    title: title,
-    date: date,
-    priority: priority,
-    success: success,
-    expectedTime: expectedTime,
-    completed: false
-};
+    const plan = {
+        id: Date.now(),
+        title: title,
+        date: date,
+        priority: priority,
+        success: success,
+        expectedTime: expectedTime,
+        completed: false
+    };
 
     const plans = JSON.parse(localStorage.getItem("plans") || "[]");
 
