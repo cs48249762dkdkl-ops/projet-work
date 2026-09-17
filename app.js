@@ -378,3 +378,29 @@ function exportT06Data() {
         JSON.stringify(data)
     );
 }
+
+function exportT06Data() {
+    const data = {
+        source: "T06",
+        exportedAt: new Date().toISOString(),
+        plans: JSON.parse(localStorage.getItem("plans") || "[]"),
+        todos: JSON.parse(localStorage.getItem("todos") || "[]"),
+        executionRecords: JSON.parse(
+            localStorage.getItem("executionRecords") || "[]"
+        )
+    };
+
+    const blob = new Blob(
+        [JSON.stringify(data, null, 2)],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "T06-data.json";
+    link.click();
+
+    URL.revokeObjectURL(url);
+}
