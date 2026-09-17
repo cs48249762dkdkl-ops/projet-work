@@ -336,11 +336,6 @@ function finishExecution() {
     renderReview();
 }
 
-function exportT06Data() {
-    const plans = JSON.parse(
-        localStorage.getItem("plans") || "[]"
-    );
-
     const todos = JSON.parse(
         localStorage.getItem("todos") || "[]"
     );
