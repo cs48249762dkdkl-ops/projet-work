@@ -1,13 +1,3 @@
-
-도 삭제해야 해.
-
-### 지금 할 일
-
-`createPlan()` 함수 안에서 **``` 문자 두 개를 모두 삭제**해줘.
-
-즉 이런 형태가 되어야 해:
-
-```javascript
 function createPlan() {
     const title = document.getElementById("planTitle").value;
     const date = document.getElementById("planDate").value;
